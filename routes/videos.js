@@ -25,3 +25,10 @@ router.get("/", (req, res) => {
 });
 
 // second endpoint to display a selected video detail
+router.get("/:videoId", (req, res) => {
+  const selectedVideo = videos.find((video) => video.id === req.params.videoId);
+
+  res.json(selectedVideo);
+
+  //   add something for if video doesn't exist
+});
