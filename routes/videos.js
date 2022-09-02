@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
+const crypto = require("crypto");
 
 function videoDetails() {
   const videoFile = fs.readFileSync("./data/videos.json");
@@ -42,8 +43,8 @@ router.post("/", (req, res) => {
 
   // create a new object for new video
   const newVideo = {
-    // id:
-    // title: req.body.title,
+    id: crypto.randomUUID(),
+    title: req.body.title,
     channel: "Row Your Boat",
     image: "http://localhost:8080/images/Upload-video-preview.jpg",
     description: req.body.description,
@@ -51,7 +52,7 @@ router.post("/", (req, res) => {
     likes: "0",
     duration: "5:00",
     video: "https://project-2-api.herokuapp.com/stream",
-    // timestamp: Date.now(),
+    timestamp: Date.now(),
     comments: [],
   };
 
