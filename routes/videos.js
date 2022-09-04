@@ -10,7 +10,7 @@ function videoDetails() {
 }
 
 // first endpoint to display videos in videolist
-router.get("/", (req, res) => {
+router.get("/", (_req, res) => {
   const videos = videoDetails();
 
   const videosArray = videos.map((video) => {
@@ -27,6 +27,7 @@ router.get("/", (req, res) => {
 
 // second endpoint to display a selected video detail
 router.get("/:videoId", (req, res) => {
+  const videos = videoDetails();
   const selectedVideo = videos.find((video) => video.id === req.params.videoId);
 
   if (!selectedVideo) {
